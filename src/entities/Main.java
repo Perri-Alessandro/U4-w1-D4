@@ -35,13 +35,13 @@ public class Main {
 
         System.out.println("NUOVI DIPENDENTI");
         for (Dipendente dipendente : tipiDiDipendente) {
-            System.out.println("STIPENDIO: " + dipendente.calculateSalary(dipendente.getStipendio()) + " - reparto: " + dipendente.getDipartimento() + " - matricola: " + dipendente.getMatricola());
+            System.out.println("STIPENDIO: " + dipendente.calculateSalary() + " - reparto: " + dipendente.getDipartimento() + " - matricola: " + dipendente.getMatricola());
         }
 
         double sommaStipendi = 0.0;
 
         for (int i = tipiDiDipendente.length - 3; i < tipiDiDipendente.length; i++) {
-            sommaStipendi += tipiDiDipendente[i].calculateSalary(Dipendente.getStipendio());
+            sommaStipendi += tipiDiDipendente[i].calculateSalary();
         }
 
         System.out.println("SOMMA STIPENDI ULTIMI 3 DIPENDENTI: " + sommaStipendi);

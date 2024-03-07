@@ -3,7 +3,7 @@ package entities;
 import java.util.Random;
 
 public abstract class Dipendente {
-    private static int stipendio;
+    private int stipendio;
     private long matricola;
     private Dipartimento dipartimento;
 
@@ -16,7 +16,7 @@ public abstract class Dipendente {
         this.dipartimento = dipartimento;
     }
 
-    public static int getStipendio() {
+    public int getStipendio() {
         return stipendio;
     }
 
@@ -32,7 +32,7 @@ public abstract class Dipendente {
         this.dipartimento = dipartimento;
     }
 
-    public abstract int calculateSalary(int stipendio);
+    public abstract int calculateSalary();
 
     @Override
     public String toString() {

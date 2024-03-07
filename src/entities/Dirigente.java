@@ -6,9 +6,9 @@ public class Dirigente extends Dipendente {
     }
 
     @Override
-    public int calculateSalary(int stipendio) {
+    public int calculateSalary() {
         int bonus = 2500;
-        return stipendio + bonus;
+        return this.getStipendio() + bonus;
     }
 
 }

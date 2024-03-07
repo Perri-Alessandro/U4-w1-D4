@@ -6,7 +6,7 @@ public class DipendenteFullTime extends Dipendente {
     }
 
     @Override
-    public int calculateSalary(int stipendio) {
-        return stipendio;
+    public int calculateSalary() {
+        return this.getStipendio();
     }
 }
