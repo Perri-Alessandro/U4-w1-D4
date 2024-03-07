@@ -1,8 +1,12 @@
 package entities;
 
+import Interfaces.Worker;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
-public abstract class Dipendente {
+public abstract class Dipendente implements Worker {
     private int stipendio;
     private long matricola;
     private Dipartimento dipartimento;
@@ -33,6 +37,11 @@ public abstract class Dipendente {
     }
 
     public abstract int calculateSalary();
+
+    @Override
+    public void checkIn(LocalDateTime time) {
+        System.out.println("Sono un " + this.getClass().getSimpleName() + " e ho timbrato alle " + time.format(DateTimeFormatter.ISO_TIME));
+    }
 
     @Override
     public String toString() {

@@ -1,5 +1,9 @@
 package entities;
 
+import Interfaces.Worker;
+
+import java.time.LocalDateTime;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -33,6 +37,10 @@ public class Main {
         tipiDiDipendente[1] = new DipendenteFullTime(Dipartimento.VENDITE);
         tipiDiDipendente[2] = new Dirigente(Dipartimento.AMMINISTRAZIONE);
 
+        Dirigente dirigente = new Dirigente(Dipartimento.AMMINISTRAZIONE);
+        DipendenteFullTime fullTime = new DipendenteFullTime(Dipartimento.VENDITE);
+        DipendentePartTime partTime = new DipendentePartTime(Dipartimento.PRODUZIONE);
+
         System.out.println("NUOVI DIPENDENTI");
         for (Dipendente dipendente : tipiDiDipendente) {
             System.out.println("STIPENDIO: " + dipendente.calculateSalary() + " - reparto: " + dipendente.getDipartimento() + " - matricola: " + dipendente.getMatricola());
@@ -45,6 +53,14 @@ public class Main {
         }
 
         System.out.println("SOMMA STIPENDI ULTIMI 3 DIPENDENTI: " + sommaStipendi);
+
+
+        Volontario volontario = new Volontario("Aldo Rossi", 24, "Full Stack dev");
+        Worker[] workers = {dirigente, fullTime, partTime, volontario};
+
+        for (Worker worker : workers) {
+            worker.checkIn(LocalDateTime.now());
+        }
     }
 }
 
