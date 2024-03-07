@@ -2,9 +2,9 @@ package entities;
 
 import java.util.Random;
 
-public class Dipendente {
+public abstract class Dipendente {
+    private static int stipendio;
     private long matricola;
-    private int stipendio;
     private Dipartimento dipartimento;
 
     public Dipendente(Dipartimento dipartimento) {
@@ -16,12 +16,12 @@ public class Dipendente {
         this.dipartimento = dipartimento;
     }
 
-    public long getMatricola() {
-        return matricola;
+    public static int getStipendio() {
+        return stipendio;
     }
 
-    public int getStipendio() {
-        return stipendio;
+    public long getMatricola() {
+        return matricola;
     }
 
     public Dipartimento getDipartimento() {
@@ -31,6 +31,8 @@ public class Dipendente {
     public void setDipartimento(Dipartimento dipartimento) {
         this.dipartimento = dipartimento;
     }
+
+    public abstract int calculateSalary(int stipendio);
 
     @Override
     public String toString() {

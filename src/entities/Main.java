@@ -7,9 +7,14 @@ public class Main {
         Dipendente[] dipendenti = new Dipendente[Dipartimento.values().length];
 
         for (int i = 0; i < Dipartimento.values().length; i++) {
-            dipendenti[i] = new Dipendente(Dipartimento.values()[i]);
+            if (i % 3 == 0) {
+                dipendenti[i] = new DipendentePartTime(Dipartimento.values()[i]);
+            } else if (i % 3 == 1) {
+                dipendenti[i] = new DipendenteFullTime(Dipartimento.values()[i]);
+            } else {
+                dipendenti[i] = new Dirigente(Dipartimento.values()[i]);
+            }
         }
-
         for (Dipendente dipendente : dipendenti) {
             System.out.println(dipendente);
         }
@@ -20,5 +25,26 @@ public class Main {
 
         dipendenti[0].setDipartimento(Dipartimento.PRODUZIONE);
         System.out.println("CAMBIATO DIPARTIMENTO DI PRIMO DIPENDENTE " + dipendenti[0]);
+
+        Dipendente[] tipiDiDipendente = new Dipendente[3];
+
+
+        tipiDiDipendente[0] = new DipendentePartTime(Dipartimento.PRODUZIONE);
+        tipiDiDipendente[1] = new DipendenteFullTime(Dipartimento.VENDITE);
+        tipiDiDipendente[2] = new Dirigente(Dipartimento.AMMINISTRAZIONE);
+
+        System.out.println("NUOVI DIPENDENTI");
+        for (Dipendente dipendente : tipiDiDipendente) {
+            System.out.println("STIPENDIO: " + dipendente.calculateSalary(dipendente.getStipendio()) + " - reparto: " + dipendente.getDipartimento() + " - matricola: " + dipendente.getMatricola());
+        }
+
+        double sommaStipendi = 0.0;
+
+        for (int i = tipiDiDipendente.length - 3; i < tipiDiDipendente.length; i++) {
+            sommaStipendi += tipiDiDipendente[i].calculateSalary(Dipendente.getStipendio());
+        }
+
+        System.out.println("SOMMA STIPENDI ULTIMI 3 DIPENDENTI: " + sommaStipendi);
     }
 }
+
